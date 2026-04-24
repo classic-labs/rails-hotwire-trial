@@ -19,9 +19,7 @@ class Photos::LikesController < ApplicationController
 
   def render_response
     respond_to do |format|
-      format.turbo_stream {
-        render turbo_stream: turbo_stream.replace(helpers.dom_id(@photo, :like), partial: "photos/like_button", locals: { photo: @photo })
-      }
+      format.turbo_stream { render "update" }
       format.html { redirect_to root_path }
     end
   end
